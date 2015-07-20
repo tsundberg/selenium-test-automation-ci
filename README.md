@@ -50,7 +50,7 @@ Setting up a CI server is done using these steps:
     * Publish JUnit test result report
     * Test report XMLs - `**/TEST*.xml`
     * Save
-  * Build Now
+* Execute the build immediately - Build Now
 
 Any changes done to the project will now be picked up and executed.
 Documented how to setup Jenkins
