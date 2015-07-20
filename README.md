@@ -24,7 +24,7 @@ Setting up a CI server is done using these steps:
 
 * Download Jenkins from [http://jenkins-ci.org/](http://jenkins-ci.org/)
 * Move the downloaded war a directory where it can live and be executed
-* Start Jenkins with `java -jar jenkins.wa`
+* Start Jenkins with `java -jar jenkins.war`
 * Access Jenkins on [http://localhost:8080/](http://localhost:8080/)
 * Install the Git plugin
   * Manage Jenkins
@@ -37,12 +37,12 @@ Setting up a CI server is done using these steps:
   * Restart Jenkins
 * Create a new job
   * Call it Cross browse`
-  * Set the type to `Freestyle project`
+  * Use the type - Freestyle project
   * Ok
   * Set Source Code Management to Git
   * Add the url `git@github.com:tsundberg/selenium-test-automation-ci.git`
   * Build Triggers - Poll SCM
-  * Set the schedule to '* * * * *'
+  * Set the schedule to '* * * * *' - i.e. poll every minute
   * Add a build step - Invoke Gradle script
     * Use Gradle Wrapper
     * Tasks: clean build
@@ -53,4 +53,3 @@ Setting up a CI server is done using these steps:
 * Execute the build immediately - Build Now
 
 Any changes done to the project will now be picked up and executed.
-Documented how to setup Jenkins
