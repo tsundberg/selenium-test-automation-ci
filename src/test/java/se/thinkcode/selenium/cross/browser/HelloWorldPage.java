@@ -23,8 +23,18 @@ public class HelloWorldPage {
     }
 
     public String getHeadline() {
+        pause();
+
         WebElement headLine = browser.findElement(By.id("headline"));
 
         return headLine.getText();
+    }
+
+    private void pause() {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
