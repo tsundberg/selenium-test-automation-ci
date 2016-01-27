@@ -13,10 +13,10 @@ public class HelloWorldPage {
     public HelloWorldPage(WebDriver browser) {
         this.browser = browser;
 
-        String page = browser.getCurrentUrl() + "helloWorld.html";
+        String page = browser.getCurrentUrl() + "helloWorld";
         browser.get(page);
 
-        String expectedTitle = "Hello world";
+        String expectedTitle = "Hello, world";
         String actualTitle = browser.getTitle();
 
         assertThat(actualTitle, is(expectedTitle));

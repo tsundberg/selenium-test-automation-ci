@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -21,10 +22,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 @RunWith(Parameterized.class)
-public class HelloWorldTest {
+public class HelloWorldSaucelabsTest {
     private WebDriver browser;
 
-    public HelloWorldTest(WebDriver browser) {
+    public HelloWorldSaucelabsTest(WebDriver browser) {
         this.browser = browser;
     }
 
@@ -40,7 +41,7 @@ public class HelloWorldTest {
 
     @Test
     public void hello_world() {
-        String expected = "Hello world!";
+        String expected = "Hello, world!";
         HelloWorldPage helloWorldPage = new HelloWorldPage(browser);
 
         String actual = helloWorldPage.getHeadline();
@@ -60,6 +61,9 @@ public class HelloWorldTest {
         driver = getFirefoxOnLinux(jobName);
         browsers.add(new WebDriver[]{driver});
 
+        // driver = getLocalFirefox(jobName);
+        // browsers.add(new WebDriver[]{driver});
+
         return browsers;
     }
 
@@ -71,6 +75,10 @@ public class HelloWorldTest {
         capabilities.setCapability("platform", Platform.XP);
 
         return new RemoteWebDriver(sauceLabsUrl, capabilities);
+    }
+
+    private static WebDriver getLocalFirefox(String jobName) throws MalformedURLException {
+        return new FirefoxDriver();
     }
 
     private static WebDriver getFirefoxOnLinux(String jobName) throws MalformedURLException {
